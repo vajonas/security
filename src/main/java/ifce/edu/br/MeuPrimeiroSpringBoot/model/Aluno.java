@@ -48,6 +48,10 @@ public class Aluno {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
+	
+	@OneToOne(mappedBy = "perfil", cascade = CascadeType.ALL)
+	private Perfil perfil;
+
 
 	@ManyToOne
 	Sede sede;
@@ -164,6 +168,12 @@ public class Aluno {
     }
     public void setPerfis(String perfis) {
         this.perfis = perfis;
+    }
+    public Perfil getPerfil() {
+        return perfil;
+    }
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 	
 }
