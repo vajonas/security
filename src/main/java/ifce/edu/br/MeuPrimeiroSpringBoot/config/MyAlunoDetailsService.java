@@ -1,10 +1,10 @@
 package ifce.edu.br.MeuPrimeiroSpringBoot.config;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,7 +25,7 @@ public class MyAlunoDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Aluno aluno = service.findByAlunoEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario " + username + "não encontrado"));
-        return new Aluno(aluno.getEmail(), aluno.getSenha(),
+        return new User(aluno.getEmail(), aluno.getSenha(),
                 AuthorityUtils.createAuthorityList(getAuthorities(aluno.getPerfis())));
     }
     

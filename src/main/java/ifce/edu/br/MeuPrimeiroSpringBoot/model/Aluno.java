@@ -3,6 +3,7 @@ package ifce.edu.br.MeuPrimeiroSpringBoot.model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,7 +45,7 @@ public class Aluno {
     private boolean ativo;
     
     @Column (name = "perfis")
-    private String perfis;
+    private List<Perfil> perfis;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
@@ -163,10 +164,10 @@ public class Aluno {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
-    public String getPerfis() {
+    public List<Perfil> getPerfis() {
         return perfis;
     }
-    public void setPerfis(String perfis) {
+    public void setPerfis(List<Perfil> perfis) {
         this.perfis = perfis;
     }
     public Perfil getPerfil() {
